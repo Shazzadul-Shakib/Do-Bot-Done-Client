@@ -17,7 +17,7 @@ const Navbar = () => {
       <section className='sticky top-0 z-50'>
         <div className=" relative">
           {/* Upper navbar section */}
-          <div className="bg-bg flex justify-between items-center mx-4 mt-2 md:mx-8 md:mt-0">
+          <div className="bg-bg flex justify-between items-center mx-4 mt-2 md:mx-8 md:mt-0 p-2">
             {/* logo */}
             <div>
               <img className="h-14" src={logo} alt="" />
