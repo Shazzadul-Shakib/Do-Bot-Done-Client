@@ -9,6 +9,7 @@ export default {
       accent: "#B9B4C7",
       bg: "#FAF0E6",
       green: "#5BB318",
+      red: "#FF0000",
     },
   },
   plugins: [],
