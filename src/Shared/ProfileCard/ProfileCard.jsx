@@ -2,8 +2,19 @@ import img from '../../assets/profile.jpg';
 import { FaSquareFacebook, FaSquareGithub } from "react-icons/fa6";
 import { BiLogOut } from "react-icons/bi";
 import { FiEdit } from "react-icons/fi";
+import { useContext } from 'react';
+import { AuthContext } from '../../Providers/AuthProvider';
 
 const ProfileCard = () => {
+  const { user, logout } = useContext(AuthContext);
+  
+  // Logout button handler
+  const handleLogout=()=>{
+    logout()
+    .then(()=>{})
+    .catch(()=>{})
+  }
+
     return (
       <section className="w-1/3 min-h-screen">
         <div className="mr-10 bg-secondary text-bg shadow-lg px-5 pt-10 py-5 rounded-xl ">
@@ -11,10 +22,10 @@ const ProfileCard = () => {
           <div className=" flex items-center">
             <img
               className="w-16 h-16 rounded-full mr-3 border-2 border-bg"
-              src={img}
+              src={user?.photoURL}
               alt=""
             />
-            <h2 className="text-xl font-medium">Shazzadul Islam Shakib</h2>
+            <h2 className="text-xl font-medium">{user?.displayName}</h2>
           </div>
           {/* Bio section */}
           <div className="my-6 px-2 border rounded-lg p-2 border-bg">
@@ -30,7 +41,7 @@ const ProfileCard = () => {
             </p>
             <p>
               <span className="text-sm font-semibold   ">Email:</span>{" "}
-              <span className="text-xs  ">shakib1186@gmail.com</span>
+              <span className="text-xs  ">{user?.email}</span>
             </p>
             <p>
               <span className="text-sm font-semibold   ">Address:</span>{" "}
@@ -59,7 +70,10 @@ const ProfileCard = () => {
               <FiEdit className="mr-2" />
               Edit Info
             </button>
-            <button className="flex items-center px-4 py-1 rounded-lg bg-accent border border-accent text-primary hover:border hover:border-bg hover:bg-secondary hover:text-bg mx-2 mt-6 text-sm">
+            <button
+              onClick={handleLogout}
+              className="flex items-center px-4 py-1 rounded-lg bg-accent border border-accent text-primary hover:border hover:border-bg hover:bg-secondary hover:text-bg mx-2 mt-6 text-sm"
+            >
               <BiLogOut className="mr-2" /> Logout
             </button>
           </div>

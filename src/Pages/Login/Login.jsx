@@ -1,13 +1,34 @@
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { BiLogoGoogle } from "react-icons/bi";
+import { AuthContext } from "../../Providers/AuthProvider";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Login = () => {
+    // userinfo from authcontext
+    const {user,googleSignIn}=useContext(AuthContext);
+    console.log(user);
+      const location = useLocation();
+      const navigate = useNavigate();
+      const from = location.state?.from?.pathname || "/";
+
       const {
         register,
         handleSubmit,
         formState: { errors },
       } = useForm();
-      const onSubmit = (data) => console.log(data);
+      const onSubmit = (data) => {
+        
+      };
+
+    //   Google sign in section
+    const handleGoogleSignIn=()=>{
+        googleSignIn()
+        .then(()=>{
+            navigate(from, { replace: true });
+        })
+        .catch(()=>{})
+    }
       
   return (
     <div className="mx-auto flex min-h-screen w-full items-center justify-center bg-bg text-white">
@@ -61,15 +82,18 @@ const Login = () => {
 
         <p className="text-center text-md">
           No account?
-          <a
-            href="#"
+          <Link
+            to="/signup"
             className=" text-secondary underline-offset-4 hover:underline"
           >
             Create One
-          </a>
+          </Link>
         </p>
 
-        <button className="transform rounded-xl border border-primary  text-secondary py-3 font-bold duration-200 hover:bg-primary hover:text-bg flex items-center justify-center">
+        <button
+          onClick={handleGoogleSignIn}
+          className="transform rounded-xl border border-primary  text-secondary py-3 font-bold duration-200 hover:bg-primary hover:text-bg flex items-center justify-center"
+        >
           <BiLogoGoogle className="mr-3 text-2xl" />
           Continue With Google
         </button>
