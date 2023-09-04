@@ -5,8 +5,8 @@ import { FiEdit } from "react-icons/fi";
 
 const ProfileCard = () => {
     return (
-      <section className='w-1/3'>
-        <div className=" w-5/6 bg-secondary text-bg shadow-lg px-5 pt-10 py-5 rounded-xl ">
+      <section className="w-1/3 min-h-screen">
+        <div className="mr-10 bg-secondary text-bg shadow-lg px-5 pt-10 py-5 rounded-xl ">
           {/* Visual Profile */}
           <div className=" flex items-center">
             <img
