@@ -17,7 +17,6 @@ const Navbar = () => {
   // Toggle profilecard
   const [openProfile,setOpenProfile]=useState(false);
   const toggleProfile=()=>{
-    console.log('clicked')
     setOpenProfile(!openProfile);//todo make custom hook to toggle
   }
 

@@ -4,14 +4,14 @@ import React from 'react';
 const AddNewTodo = () => {
     return (
         // {/* add new todo to list container */}
-      <div className=" bg-secondary h-[340px] rounded-xl p-8 mb-5 text-bg">
+      <div className=" border-4 border-bg bg-secondary h-[340px] rounded-xl p-4 md:p-8 mb-5 text-bg md:border-none">
         {/*add new todo headers */}
         <div className=" text-center">
           <h1 className="text-lg font-semibold">Add new todo</h1>
           <hr className="my-2" />
         </div>
         {/* add new todo */}
-        <div>
+        <div className=' flex flex-col justify-center'>
           {/* MUI date picker */}
           <DatePicker
             className="rounded-xl bg-accent "
@@ -25,7 +25,7 @@ const AddNewTodo = () => {
               New todo
             </label>
             <textarea
-              className=" rounded-xl mt-1 text-primary p-2 resize-none outline-none"
+              className=" w-full rounded-xl mt-1 text-primary p-2 resize-none outline-none"
               name="addTodo"
               id=""
               cols="30"
