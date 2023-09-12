@@ -5,6 +5,7 @@ import { BsSearch } from "react-icons/bs";
 import { Link } from 'react-router-dom';
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../Providers/AuthProvider';
+import ProfileCard from '../ProfileCard/ProfileCard';
 
 const Navbar = () => {
   const {user}=useContext(AuthContext);
@@ -12,6 +13,12 @@ const Navbar = () => {
   const [openMenu,setOpenMenu]=useState(false);
   const toggleMenu=()=>{
     setOpenMenu(!openMenu);//todo make custom hook to toggle
+  }
+  // Toggle profilecard
+  const [openProfile,setOpenProfile]=useState(false);
+  const toggleProfile=()=>{
+    console.log('clicked')
+    setOpenProfile(!openProfile);//todo make custom hook to toggle
   }
 
 
@@ -48,9 +55,22 @@ const Navbar = () => {
                 <FiPlus onClick={toggleMenu} className="text-xl mx-2 md:mx-4" />
               )}
             </div>
-            <div className="h-8 w-8 ml-2 rounded-full md:hidden">
-              <img className="h-full rounded-full " src={user?.photoURL} alt="" />
+            <div
+              onClick={toggleProfile}
+              className="h-8 w-8 ml-2 rounded-full md:hidden"
+            >
+              <img
+                className="h-full rounded-full "
+                src={user?.photoURL}
+                alt=""
+              />
             </div>
+            {/* Profilecard */}
+            {openProfile && (
+              <div className=" absolute top-full right-0 mx-3 border-4 border-bg rounded-lg">
+                <ProfileCard />
+              </div>
+            )}
           </div>
           {/* Lower navbar section contains navlinks */}
           {openMenu && (
