@@ -23,14 +23,14 @@ const Todo = () => {
         </div>
         {/* Todo lists */}
         <div className=" my-10">
-          <div className=" mx-4 mb-4 py-2 px-4 bg-accent text-primary rounded-xl flex items-center relative">
+          <div className=" w-[90%] ml-1 md:mx-4 mb-4 py-2 px-4 bg-accent text-primary rounded-xl flex items-center relative">
             <input
               className=" w-4 h-4 rounded"
               type="checkbox"
               name="list"
               id=""
             />
-            <span className=" text-lg ml-3">This work to be done </span>
+            <span className=" text-lg mx-3">I have to divorce my wife </span>
             <BiDotsVerticalRounded
               onClick={toggle}
               className=" absolute right-2 text-lg cursor-pointer"
@@ -43,14 +43,14 @@ const Todo = () => {
               </div>
             )}
           </div>
-          <div className=" mx-4 mb-4 py-2 px-4 bg-accent text-primary rounded-xl flex items-center relative">
+          <div className=" w-[90%] ml-1 md:mx-4 mb-4 py-2 px-4 bg-accent text-primary rounded-xl flex items-center relative">
             <input
               className=" w-4 h-4 rounded"
               type="checkbox"
               name="list"
               id=""
             />
-            <span className=" text-lg ml-3">This work to be done </span>
+            <span className=" text-lg mx-3">I have to divorce my wife in this day and return her gifts today </span>
             <BiDotsVerticalRounded
               onClick={toggle}
               className=" absolute right-2 text-lg cursor-pointer"
@@ -63,14 +63,14 @@ const Todo = () => {
               </div>
             )}
           </div>
-          <div className=" mx-4 mb-4 py-2 px-4 bg-accent text-primary rounded-xl flex items-center relative">
+          <div className=" w-[90%] ml-1 md:mx-4 mb-4 py-2 px-4 bg-accent text-primary rounded-xl flex items-center relative">
             <input
               className=" w-4 h-4 rounded"
               type="checkbox"
               name="list"
               id=""
             />
-            <span className=" text-lg ml-3">This work to be done </span>
+            <span className=" text-lg mx-3">I have to divorce my wife in this day and return her gifts today </span>
             <BiDotsVerticalRounded
               onClick={toggle}
               className=" absolute right-2 text-lg cursor-pointer"
@@ -83,14 +83,14 @@ const Todo = () => {
               </div>
             )}
           </div>
-          <div className=" mx-4 mb-4 py-2 px-4 bg-accent text-primary rounded-xl flex items-center relative">
+          <div className=" w-[90%] ml-1 md:mx-4 mb-4 py-2 px-4 bg-accent text-primary rounded-xl flex items-center relative">
             <input
               className=" w-4 h-4 rounded"
               type="checkbox"
               name="list"
               id=""
             />
-            <span className=" text-lg ml-3">This work to be done </span>
+            <span className=" text-lg mx-3">I have to divorce my wife in this day and return her gifts today </span>
             <BiDotsVerticalRounded
               onClick={toggle}
               className=" absolute right-2 text-lg cursor-pointer"
@@ -103,14 +103,14 @@ const Todo = () => {
               </div>
             )}
           </div>
-          <div className=" mx-4 mb-4 py-2 px-4 bg-accent text-primary rounded-xl flex items-center relative">
+          <div className=" w-[90%] ml-1 md:mx-4 mb-4 py-2 px-4 bg-accent text-primary rounded-xl flex items-center relative">
             <input
               className=" w-4 h-4 rounded"
               type="checkbox"
               name="list"
               id=""
             />
-            <span className=" text-lg ml-3">This work to be done </span>
+            <span className=" text-lg mx-3">I have to divorce my wife in this day and return her gifts today </span>
             <BiDotsVerticalRounded
               onClick={toggle}
               className=" absolute right-2 text-lg cursor-pointer"
@@ -123,14 +123,14 @@ const Todo = () => {
               </div>
             )}
           </div>
-          <div className=" mx-4 mb-4 py-2 px-4 bg-accent text-primary rounded-xl flex items-center relative">
+          <div className=" w-[90%] ml-1 md:mx-4 mb-4 py-2 px-4 bg-accent text-primary rounded-xl flex items-center relative">
             <input
               className=" w-4 h-4 rounded"
               type="checkbox"
               name="list"
               id=""
             />
-            <span className=" text-lg ml-3">This work to be done </span>
+            <span className=" text-lg mx-3">I have to divorce my wife in this day and return her gifts today </span>
             <BiDotsVerticalRounded
               onClick={toggle}
               className=" absolute right-2 text-lg cursor-pointer"
@@ -143,14 +143,14 @@ const Todo = () => {
               </div>
             )}
           </div>
-          <div className=" mx-4 mb-4 py-2 px-4 bg-accent text-primary rounded-xl flex items-center relative">
+          <div className=" w-[90%] ml-1 md:mx-4 mb-4 py-2 px-4 bg-accent text-primary rounded-xl flex items-center relative">
             <input
               className=" w-4 h-4 rounded"
               type="checkbox"
               name="list"
               id=""
             />
-            <span className=" text-lg ml-3">This work to be done </span>
+            <span className=" text-lg mx-3">I have to divorce my wife in this day and return her gifts today </span>
             <BiDotsVerticalRounded
               onClick={toggle}
               className=" absolute right-2 text-lg cursor-pointer"
@@ -163,14 +163,14 @@ const Todo = () => {
               </div>
             )}
           </div>
-          <div className=" mx-4 mb-4 py-2 px-4 bg-accent text-primary rounded-xl flex items-center relative">
+          <div className=" w-[90%] ml-1 md:mx-4 mb-4 py-2 px-4 bg-accent text-primary rounded-xl flex items-center relative">
             <input
               className=" w-4 h-4 rounded"
               type="checkbox"
               name="list"
               id=""
             />
-            <span className=" text-lg ml-3">This work to be done </span>
+            <span className=" text-lg mx-3">I have to divorce my wife in this day and return her gifts today </span>
             <BiDotsVerticalRounded
               onClick={toggle}
               className=" absolute right-2 text-lg cursor-pointer"
@@ -183,14 +183,14 @@ const Todo = () => {
               </div>
             )}
           </div>
-          <div className=" mx-4 mb-4 py-2 px-4 bg-accent text-primary rounded-xl flex items-center relative">
+          <div className=" w-[90%] ml-1 md:mx-4 mb-4 py-2 px-4 bg-accent text-primary rounded-xl flex items-center relative">
             <input
               className=" w-4 h-4 rounded"
               type="checkbox"
               name="list"
               id=""
             />
-            <span className=" text-lg ml-3">This work to be done </span>
+            <span className=" text-lg mx-3">I have to divorce my wife in this day and return her gifts today </span>
             <BiDotsVerticalRounded
               onClick={toggle}
               className=" absolute right-2 text-lg cursor-pointer"
@@ -203,14 +203,14 @@ const Todo = () => {
               </div>
             )}
           </div>
-          <div className=" mx-4 mb-4 py-2 px-4 bg-accent text-primary rounded-xl flex items-center relative">
+          <div className=" w-[90%] ml-1 md:mx-4 mb-4 py-2 px-4 bg-accent text-primary rounded-xl flex items-center relative">
             <input
               className=" w-4 h-4 rounded"
               type="checkbox"
               name="list"
               id=""
             />
-            <span className=" text-lg ml-3">This work to be done </span>
+            <span className=" text-lg mx-3">I have to divorce my wife in this day and return her gifts today </span>
             <BiDotsVerticalRounded
               onClick={toggle}
               className=" absolute right-2 text-lg cursor-pointer"
@@ -223,14 +223,14 @@ const Todo = () => {
               </div>
             )}
           </div>
-          <div className=" mx-4 mb-4 py-2 px-4 bg-accent text-primary rounded-xl flex items-center relative">
+          <div className=" w-[90%] ml-1 md:mx-4 mb-4 py-2 px-4 bg-accent text-primary rounded-xl flex items-center relative">
             <input
               className=" w-4 h-4 rounded"
               type="checkbox"
               name="list"
               id=""
             />
-            <span className=" text-lg ml-3">This work to be done </span>
+            <span className=" text-lg mx-3">I have to divorce my wife in this day and return her gifts today </span>
             <BiDotsVerticalRounded
               onClick={toggle}
               className=" absolute right-2 text-lg cursor-pointer"
@@ -243,14 +243,14 @@ const Todo = () => {
               </div>
             )}
           </div>
-          <div className=" mx-4 mb-4 py-2 px-4 bg-accent text-primary rounded-xl flex items-center relative">
+          <div className=" w-[90%] ml-1 md:mx-4 mb-4 py-2 px-4 bg-accent text-primary rounded-xl flex items-center relative">
             <input
               className=" w-4 h-4 rounded"
               type="checkbox"
               name="list"
               id=""
             />
-            <span className=" text-lg ml-3">This work to be done </span>
+            <span className=" text-lg mx-3">I have to divorce my wife in this day and return her gifts today </span>
             <BiDotsVerticalRounded
               onClick={toggle}
               className=" absolute right-2 text-lg cursor-pointer"
@@ -263,14 +263,14 @@ const Todo = () => {
               </div>
             )}
           </div>
-          <div className=" mx-4 mb-4 py-2 px-4 bg-accent text-primary rounded-xl flex items-center relative">
+          <div className=" w-[90%] ml-1 md:mx-4 mb-4 py-2 px-4 bg-accent text-primary rounded-xl flex items-center relative">
             <input
               className=" w-4 h-4 rounded"
               type="checkbox"
               name="list"
               id=""
             />
-            <span className=" text-lg ml-3">This work to be done </span>
+            <span className=" text-lg mx-3">I have to divorce my wife in this day and return her gifts today </span>
             <BiDotsVerticalRounded
               onClick={toggle}
               className=" absolute right-2 text-lg cursor-pointer"
@@ -283,14 +283,14 @@ const Todo = () => {
               </div>
             )}
           </div>
-          <div className=" mx-4 mb-4 py-2 px-4 bg-accent text-primary rounded-xl flex items-center relative">
+          <div className=" w-[90%] ml-1 md:mx-4 mb-4 py-2 px-4 bg-accent text-primary rounded-xl flex items-center relative">
             <input
               className=" w-4 h-4 rounded"
               type="checkbox"
               name="list"
               id=""
             />
-            <span className=" text-lg ml-3">This work to be done </span>
+            <span className=" text-lg mx-3">I have to divorce my wife in this day and return her gifts today </span>
             <BiDotsVerticalRounded
               onClick={toggle}
               className=" absolute right-2 text-lg cursor-pointer"

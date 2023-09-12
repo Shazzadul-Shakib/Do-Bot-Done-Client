@@ -23,7 +23,7 @@ const Main = () => {
         </div>
       {/* Add new todo icon */}
       <div className=" flex justify-center mt-6 md:hidden">
-        <AiOutlinePlusCircle className=" text-5xl text-green"/>
+        <AiOutlinePlusCircle className=" text-6xl text-secondary"/>
       </div>
       </div>
     </div>
