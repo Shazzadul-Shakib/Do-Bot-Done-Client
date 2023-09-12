@@ -13,7 +13,7 @@ const Todo = () => {
   return (
     <section>
       {/* List shown container */}
-      <div className="h-[80vh] overflow-y-scroll bg-secondary rounded-xl p-4 text-bg">
+      <div className= "h-[75vh] md:h-[80vh] overflow-y-scroll bg-secondary rounded-xl p-4 text-bg">
         {/* Todo headers */}
         <div className=" text-center">
           <h1 className="text-lg font-semibold">

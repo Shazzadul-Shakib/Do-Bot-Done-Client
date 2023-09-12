@@ -3,9 +3,11 @@ import { AiOutlineSearch } from "react-icons/ai";
 import { FiSun, FiBell, FiPlus, FiMinus } from "react-icons/fi";
 import { BsSearch } from "react-icons/bs";
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { AuthContext } from '../../Providers/AuthProvider';
 
 const Navbar = () => {
+  const {user}=useContext(AuthContext);
   // Toggle menubar
   const [openMenu,setOpenMenu]=useState(false);
   const toggleMenu=()=>{
@@ -14,13 +16,13 @@ const Navbar = () => {
 
 
     return (
-      <section className='sticky top-0 z-50'>
+      <section className="sticky top-0 z-50">
         <div className=" relative">
           {/* Upper navbar section */}
           <div className="bg-bg flex justify-between items-center mx-4 mt-2 md:mx-8 md:mt-0 p-2">
             {/* logo */}
             <div>
-              <img className="h-14" src={logo} alt="" />
+              <img className="h-10 md:h-14" src={logo} alt="" />
             </div>
             {/* Search bar */}
             <div className="hidden md:flex relative max-w-md">
@@ -36,7 +38,7 @@ const Navbar = () => {
             <div className=" flex">
               <BsSearch className="text-lg mx-2 md:mx-4 md:hidden" />
               <FiSun className="text-xl mx-2 md:mx-4" />
-              <FiBell className="text-xl mx-2 md:mx-4" />
+              <FiBell className="text-xl mx-3 md:mx-4" />
               {openMenu ? (
                 <FiMinus
                   onClick={toggleMenu}
@@ -45,6 +47,9 @@ const Navbar = () => {
               ) : (
                 <FiPlus onClick={toggleMenu} className="text-xl mx-2 md:mx-4" />
               )}
+            </div>
+            <div className="h-8 w-8 ml-2 rounded-full md:hidden">
+              <img className="h-full rounded-full " src={user?.photoURL} alt="" />
             </div>
           </div>
           {/* Lower navbar section contains navlinks */}
