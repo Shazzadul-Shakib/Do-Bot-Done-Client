@@ -1,9 +1,20 @@
 import { DatePicker } from '@mui/x-date-pickers';
 import React from 'react';
+import { useForm } from 'react-hook-form';
 
 const AddNewTodo = () => {
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
+  const onSubmit = (data) => {
+    reset();
+    console.log(data.addTodo);
+  };
     return (
-        // {/* add new todo to list container */}
+      // {/* add new todo to list container */}
       <div className=" border-4 border-bg bg-secondary h-[340px] rounded-xl p-4 md:p-8 mb-5 text-bg md:border-none">
         {/*add new todo headers */}
         <div className=" text-center">
@@ -11,7 +22,7 @@ const AddNewTodo = () => {
           <hr className="my-2" />
         </div>
         {/* add new todo */}
-        <div className=' flex flex-col justify-center'>
+        <div className=" flex flex-col justify-center">
           {/* MUI date picker */}
           <DatePicker
             className="rounded-xl bg-accent "
@@ -20,11 +31,12 @@ const AddNewTodo = () => {
             // onChange={(newValue) => setValue(newValue)}
           />
           {/* Text-area */}
-          <div className=" mt-4">
+          <form onSubmit={handleSubmit(onSubmit)} className=" mt-4">
             <label className=" text-sm" htmlFor="addTodo">
               New todo
             </label>
             <textarea
+              {...register("addTodo", { required: true })}
               className=" w-full rounded-xl mt-1 text-primary p-2 resize-none outline-none"
               name="addTodo"
               id=""
@@ -36,7 +48,7 @@ const AddNewTodo = () => {
               type="submit"
               value="ADD TODO"
             />
-          </div>
+          </form>
         </div>
       </div>
     );
