@@ -34,7 +34,7 @@ const Main = () => {
         </div>
         {createNewTodo && (
           <div className=" absolute bottom-16 mx-2 md:hidden">
-            <AddNewTodo />
+            <AddNewTodo onAddSuccess={toggleNewTodo} />
           </div>
         )}
       </div>
