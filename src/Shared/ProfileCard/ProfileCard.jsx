@@ -7,7 +7,7 @@ import { AuthContext } from '../../Providers/AuthProvider';
 
 const ProfileCard = () => {
   const { user, logout } = useContext(AuthContext);
-  // console.log(user)
+  console.log(user)
   
   // Logout button handler
   const handleLogout=()=>{
@@ -45,21 +45,21 @@ const ProfileCard = () => {
           {/* Personal Information section */}
           <div>
             <p>
-              <span className="text-sm font-semibold  ">Phone:</span>{" "}
-              <span className="text-xs  ">01760274562</span>
+              <span className="text-sm font-semibold  ">Phone:</span>
+              <span className="text-xs pl-2 ">{user.phoneNumber?user.phoneNumber :'N/A'}</span>
             </p>
             <p>
-              <span className="text-sm font-semibold   ">Email:</span>{" "}
-              <span className="text-xs  ">{user?.email}</span>
+              <span className="text-sm font-semibold   ">Email:</span>
+              <span className="text-xs pl-2 ">{user?.email}</span>
             </p>
             <p>
-              <span className="text-sm font-semibold   ">Address:</span>{" "}
-              <span className="text-xs  ">347/3A, East kazipara</span>
+              <span className="text-sm font-semibold   ">Address:</span>
+              <span className="text-xs pl-2 ">N/A</span>
             </p>
           </div>
           <hr className="my-4" />
           {/* Personal Social links with icons */}
-          <div>
+          {/* <div>
             <div className="flex items-center">
               <FaSquareFacebook className=" text-lg rounded-lg  mr-4 mb-2" />
               <a href="" className="text-sm">
@@ -72,7 +72,7 @@ const ProfileCard = () => {
                 Shazzadul-Shakib
               </a>
             </div>
-          </div>
+          </div> */}
           {/* Edit profile button */}
           <div className=" flex justify-end mt-4">
             <button className=" flex items-center px-4 py-1 rounded-lg border border-bg mx-2 mt-6 text-xs">

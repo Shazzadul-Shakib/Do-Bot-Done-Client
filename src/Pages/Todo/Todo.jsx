@@ -42,7 +42,7 @@ const Todo = () => {
     <section>
       <div className="h-[75vh] md:h-[80vh] overflow-y-scroll bg-secondary rounded-xl p-4 text-bg">
         <div className="text-center">
-          <h1 className="text-lg font-semibold">To-Do List for [4-9-2023]</h1>
+          <h1 className="text-lg font-semibold uppercase">Tasks for Today</h1>
           <hr className="my-2" />
         </div>
         <div className="my-10">
@@ -71,7 +71,7 @@ const Todo = () => {
               )}
             </div>
           ))}
-          <div className={`text-center ${data.length>0 && "hidden"}`}>
+          <div className={`text-center ${data.length > 0 && "hidden"}`}>
             <h1>No Todos for today!</h1>
           </div>
         </div>
