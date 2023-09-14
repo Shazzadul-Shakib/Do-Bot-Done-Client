@@ -45,7 +45,7 @@ const Todo = () => {
           <hr className="my-2" />
         </div>
         <div className="my-10">
-          {data.map((todo) => (
+          {data?.map((todo) => (
             <div
               className="w-[90%] ml-1 md:mx-4 mb-4 py-2 px-4 bg-accent text-primary rounded-xl flex items-center relative"
               key={todo._id}
@@ -70,6 +70,9 @@ const Todo = () => {
               )}
             </div>
           ))}
+          <div className={`text-center ${data.length>0 && "hidden"}`}>
+            <h1>No Todos for today!</h1>
+          </div>
         </div>
       </div>
       {/* Conditionally render the modal */}

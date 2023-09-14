@@ -1,10 +1,12 @@
 import { DatePicker } from '@mui/x-date-pickers';
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import useTodo from '../../Hooks/useTodo';
+import { AuthContext } from '../../Providers/AuthProvider';
 
 const AddNewTodo = ({ onAddSuccess }) => {
   const [data, isLoading, refetch] = useTodo();
+  const {user}=useContext(AuthContext);
 
   const {
     register,
@@ -14,6 +16,7 @@ const AddNewTodo = ({ onAddSuccess }) => {
   } = useForm();
 
   const onSubmit = (data) => {
+    data.userEmail = user.email;
     // Send new todo to server
     fetch("http://localhost:5000/todos", {
       method: "POST",
@@ -32,7 +35,7 @@ const AddNewTodo = ({ onAddSuccess }) => {
   };
   return (
     // {/* add new todo to list container */}
-    <div className=" border-4 border-bg bg-secondary h-[340px] rounded-xl p-4 md:p-8 mb-5 text-bg md:border-none">
+    <div className=" border-4 border-bg bg-secondary h-[320px] rounded-xl p-4 md:p-8 mb-5 text-bg md:border-none">
       {/*add new todo headers */}
       <div className=" text-center">
         <h1 className="text-lg font-semibold">Add new todo</h1>
@@ -40,21 +43,12 @@ const AddNewTodo = ({ onAddSuccess }) => {
       </div>
       {/* add new todo */}
       <div className=" flex flex-col justify-center z-0">
-        {/* MUI date picker */}
-        <DatePicker
-          className="rounded-xl bg-accent  "
-          label="Select The Date"
-          // value={value}
-          // onChange={(newValue) => setValue(newValue)}
-        />
         {/* Text-area */}
         <form onSubmit={handleSubmit(onSubmit)} className=" mt-4">
-          <label className=" text-sm" htmlFor="todo">
-            New todo
-          </label>
+         
           <textarea
             {...register("todo", { required: true })}
-            className=" w-full rounded-xl mt-1 text-primary p-2 resize-none outline-none"
+            className=" w-full rounded-xl my-3 text-primary p-2 resize-none outline-none"
             name="todo"
             id=""
             cols="30"
