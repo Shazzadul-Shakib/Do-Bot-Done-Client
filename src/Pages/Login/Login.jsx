@@ -6,8 +6,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Login = () => {
     // userinfo from authcontext
-    const {user,googleSignIn}=useContext(AuthContext);
-    console.log(user);
+    const { user, googleSignIn, loginUser } = useContext(AuthContext);
       const location = useLocation();
       const navigate = useNavigate();
       const from = location.state?.from?.pathname || "/";
@@ -18,7 +17,11 @@ const Login = () => {
         formState: { errors },
       } = useForm();
       const onSubmit = (data) => {
-        
+        loginUser(data.email,data.password)
+        .then(res=>{
+          navigate(from, { replace: true });
+        })
+        .catch(errror=>{})
       };
 
     //   Google sign in section

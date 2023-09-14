@@ -1,4 +1,5 @@
 import logo from '../../assets/Do-Bot-Done-logo.svg'
+import img from '../../assets/profile.jpg';
 import { AiOutlineSearch } from "react-icons/ai";
 import { FiSun, FiBell, FiPlus, FiMinus } from "react-icons/fi";
 import { BsSearch } from "react-icons/bs";
@@ -58,15 +59,23 @@ const Navbar = () => {
               onClick={toggleProfile}
               className="h-8 w-8 ml-2 rounded-full md:hidden"
             >
-              <img
-                className="h-full rounded-full "
-                src={user?.photoURL}
-                alt=""
-              />
+              {user.photoURL ? (
+                <img
+                  className="h-full rounded-full "
+                  src={user?.photoURL}
+                  alt=""
+                />
+              ) : (
+                <img
+                  className="h-full rounded-full "
+                  src={img}
+                  alt=""
+                />
+              )}
             </div>
             {/* Profilecard */}
             {openProfile && (
-              <div className=" absolute top-full right-0 mx-3 border-4 border-bg rounded-lg">
+              <div className=" absolute top-full right-0 mx-3 border-4 border-bg rounded-lg md:hidden">
                 <ProfileCard />
               </div>
             )}

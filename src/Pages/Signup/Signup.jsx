@@ -5,7 +5,8 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 
 const Signup = () => {
-  const { user, googleSignIn } = useContext(AuthContext);
+  const { user, googleSignIn, createUser, updateUserName } =
+    useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
   const from = location.state?.from?.pathname || "/";
@@ -14,7 +15,17 @@ const Signup = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = async(data) => {
+   await createUser(data.email,data.password)
+    .then(res=>{
+      updateUserName(data.name)
+        .then((res) => {
+          navigate(from, { replace: true });
+        })
+        .catch((error) => {});
+    })
+    .catch(error=>{})
+  };
 
   //   Google sign in section
   const handleGoogleSignIn = () => {

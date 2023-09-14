@@ -7,6 +7,7 @@ import { AuthContext } from '../../Providers/AuthProvider';
 
 const ProfileCard = () => {
   const { user, logout } = useContext(AuthContext);
+  // console.log(user)
   
   // Logout button handler
   const handleLogout=()=>{
@@ -20,11 +21,19 @@ const ProfileCard = () => {
         <div className="bg-secondary text-bg shadow-lg px-5 pt-10 py-5 rounded-xl ">
           {/* Visual Profile */}
           <div className=" flex items-center">
-            <img
-              className="w-16 h-16 rounded-full mr-3 border-2 border-bg"
-              src={user?.photoURL}
-              alt=""
-            />
+            {user.photoURL ? (
+              <img
+                className="w-16 h-16 rounded-full mr-3 border-2 border-bg"
+                src={user?.photoURL}
+                alt=""
+              />
+            ) : (
+              <img
+                className="w-16 h-16 rounded-full mr-3 border-2 border-bg"
+                src={img}
+                alt=""
+              />
+            )}
             <h2 className="text-xl font-medium">{user?.displayName}</h2>
           </div>
           {/* Bio section */}

@@ -11,13 +11,14 @@ const Todo = () => {
   const [openModal, setOpenModal] = useState(false); // State variable to manage modal visibility
   const [selectedTodo, setSelectedTodo] = useState(null); // Store the selected todo for editing
 
-  if (isLoading) {
-    return <Loader />;
-  }
   const toggle = (id) => {
     // toggle that particular id if prevstate == false then false otherwise id will toggle true
     setIsOpen((prevState) => (prevState === id ? null : id));
   };
+
+  if (isLoading) {
+    return <Loader />;
+  }
   // Toggle update modal
   const toggleModal = (todo) => {
     setOpenModal(!openModal);
