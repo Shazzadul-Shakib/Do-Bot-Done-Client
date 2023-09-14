@@ -1,17 +1,37 @@
 import { DatePicker } from '@mui/x-date-pickers';
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import useTodo from '../../Hooks/useTodo';
 
 const AddNewTodo = () => {
+  const [data, isLoading, refetch] = useTodo();
+
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
   } = useForm();
+// use refetch fromn usequerry
+
   const onSubmit = (data) => {
     reset();
-    console.log(data.addTodo);
+    
+    // Send new todo to server
+    fetch("http://localhost:5000/todos", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        // refetch after succesfully added the todo 
+        refetch();
+      });
+   
   };
     return (
       // {/* add new todo to list container */}
@@ -32,13 +52,13 @@ const AddNewTodo = () => {
           />
           {/* Text-area */}
           <form onSubmit={handleSubmit(onSubmit)} className=" mt-4">
-            <label className=" text-sm" htmlFor="addTodo">
+            <label className=" text-sm" htmlFor="todo">
               New todo
             </label>
             <textarea
-              {...register("addTodo", { required: true })}
+              {...register("todo", { required: true })}
               className=" w-full rounded-xl mt-1 text-primary p-2 resize-none outline-none"
-              name="addTodo"
+              name="todo"
               id=""
               cols="30"
               rows="3"
