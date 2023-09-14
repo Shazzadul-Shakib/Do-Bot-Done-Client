@@ -42,10 +42,10 @@ const AddNewTodo = () => {
           <hr className="my-2" />
         </div>
         {/* add new todo */}
-        <div className=" flex flex-col justify-center">
+        <div className=" flex flex-col justify-center z-0">
           {/* MUI date picker */}
           <DatePicker
-            className="rounded-xl bg-accent "
+            className="rounded-xl bg-accent  "
             label="Select The Date"
             // value={value}
             // onChange={(newValue) => setValue(newValue)}
