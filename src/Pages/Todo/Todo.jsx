@@ -1,23 +1,32 @@
 import { useState } from "react";
 import { BiDotsVerticalRounded, BiSolidEdit } from "react-icons/bi";
 import { MdDelete } from "react-icons/md";
-import { useQuery } from "react-query";
 import Loader from "../../Shared/Loader/Loader";
 import useTodo from "../../Hooks/useTodo";
 
 const Todo = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [data,isLoading]=useTodo();
-
-  const toggle = () => {
-    setIsOpen(!isOpen);
-  };
-
- 
+  const [isOpen, setIsOpen] = useState(null);
+  const [data, isLoading, refetch] = useTodo();
 
   if (isLoading) {
     return <Loader />;
   }
+  const toggle = (id) => {
+    // toggle that particular id if prevstate == false then false otherwise id will toggle true
+    setIsOpen((prevState) => (prevState === id ? null : id));
+  };
+
+  // Handle delete a particular item
+  const handleDelete = (id) => {
+    fetch(`http://localhost:5000/todos/${id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        refetch();
+      });
+  };
 
   return (
     <section>
@@ -35,13 +44,16 @@ const Todo = () => {
               <input className="w-4 h-4" type="checkbox" name="list" id="" />
               <span className="text-lg mx-3">{todo.todo}</span>
               <BiDotsVerticalRounded
-                onClick={toggle}
+                onClick={() => toggle(todo._id)}
                 className="absolute right-2 text-lg cursor-pointer"
               />
-              {isOpen && (
+              {isOpen === todo._id && (
                 <div className="bg-accent absolute left-full ml-1 p-2 rounded-lg">
                   <BiSolidEdit className="mb-1 text-lg rounded cursor-pointer" />
-                  <MdDelete className="text-xl rounded cursor-pointer" />
+                  <MdDelete
+                    onClick={() => handleDelete(todo._id)}
+                    className="text-xl rounded cursor-pointer"
+                  />
                 </div>
               )}
             </div>
