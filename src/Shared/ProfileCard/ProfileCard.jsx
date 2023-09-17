@@ -7,7 +7,7 @@ import { AuthContext } from '../../Providers/AuthProvider';
 
 const ProfileCard = () => {
   const { user, logout } = useContext(AuthContext);
-  console.log(user)
+ 
   
   // Logout button handler
   const handleLogout=()=>{

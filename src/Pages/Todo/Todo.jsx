@@ -11,6 +11,23 @@ const Todo = () => {
   const [openModal, setOpenModal] = useState(false); // State variable to manage modal visibility
   const [selectedTodo, setSelectedTodo] = useState(null); // Store the selected todo for editing
 
+  // Upate status of checked
+  const toggleCheck=async(todo)=>{
+    todo.isChecked=!todo.isChecked;
+    await fetch(`http://localhost:5000/todos/${todo._id}`, {
+      method: "PATCH",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(todo),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        refetch();
+      });
+
+  }
+
   const toggle = (id) => {
     // toggle that particular id if prevstate == false then false otherwise id will toggle true
     setIsOpen((prevState) => (prevState === id ? null : id));
@@ -33,7 +50,6 @@ const Todo = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         refetch();
       });
   };
@@ -48,11 +64,22 @@ const Todo = () => {
         <div className="my-10">
           {data?.map((todo) => (
             <div
-              className="w-[90%] ml-1 md:mx-4 mb-4 py-2 px-4 bg-accent text-primary rounded-xl flex items-center relative"
+              className={`w-[90%] ml-1 md:mx-4 mb-4 py-2 px-4 bg-accent text-primary rounded-xl flex items-center relative`}
               key={todo._id}
             >
-              <input className="w-4 h-4" type="checkbox" name="list" id="" />
-              <span className="text-lg mx-3">{todo.todo}</span>
+              <input
+                className={`peer cursor-pointer appearance-none min-w-[16px] rounded-sm h-4 ${
+                  todo.isChecked ? "bg-green" : "bg-secondary"
+                } peer`}
+                type="checkbox"
+                onClick={() => toggleCheck(todo)}
+                name="list"
+                id="todo"
+                defaultChecked={todo.isChecked}
+              />
+              <label htmlFor="todo" className="text-lg mx-3 peer-checked:text-green peer-checked:line-through cursor-pointer ">
+                {todo.todo}
+              </label>
               <BiDotsVerticalRounded
                 onClick={() => toggle(todo._id)}
                 className="absolute right-2 text-lg cursor-pointer"

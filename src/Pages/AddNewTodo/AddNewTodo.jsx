@@ -17,6 +17,7 @@ const AddNewTodo = ({ onAddSuccess }) => {
 
   const onSubmit = (data) => {
     data.userEmail = user.email;
+    data.isChecked=false;
     // Send new todo to server
     fetch("http://localhost:5000/todos", {
       method: "POST",
@@ -30,7 +31,9 @@ const AddNewTodo = ({ onAddSuccess }) => {
         console.log(data);
         reset();
         refetch();
-        onAddSuccess();
+        if (onAddSuccess) {
+          onAddSuccess();
+        }
       });
   };
   return (

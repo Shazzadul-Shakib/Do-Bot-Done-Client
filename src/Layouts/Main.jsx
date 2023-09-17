@@ -2,7 +2,7 @@ import React, { useState, useTransition } from "react";
 import Navbar from "../Shared/Navbar/Navbar";
 import ProfileCard from "../Shared/ProfileCard/ProfileCard";
 import Todo from "../Pages/Todo/Todo";
-import AddNewTodo from "../Pages/AddNewTodo/addNewTodo";
+import AddNewTodo from "../Pages/AddNewTodo/AddNewTodo";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 
 const Main = () => {
