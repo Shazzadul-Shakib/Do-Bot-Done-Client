@@ -76,12 +76,12 @@ const Login = () => {
           />
         </form>
 
-        <a
-          href="#"
+        <Link
+          to="/forgetpass"
           className="transform text-center text-xs text-secondary duration-300 hover:text-primary"
         >
           FORGOT PASSWORD?
-        </a>
+        </Link>
 
         <p className="text-center text-md">
           No account?
