@@ -5,6 +5,9 @@ import Todo from "../Pages/Todo/Todo";
 import AddNewTodo from "../Pages/AddNewTodo/AddNewTodo";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import useOutsideClick from "../Hooks/useOutsideClick";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import UpdateProfile from "../Modal/UpdateProfile";
 
 const Main = () => {
   const [createNewTodo, setCreateNewtodo,createNewTodoRef] = useOutsideClick(false);
@@ -13,6 +16,7 @@ const Main = () => {
   };
   return (
     <div>
+      <ToastContainer/>
       <Navbar />
       <div className=" max-w-screen-2xl mx-auto bg-bg mt-8 overflow-hidden">
         <div className="flex mx-2 md:gap-4 ">

@@ -3,6 +3,8 @@ import { useForm } from "react-hook-form";
 import { BiLogoGoogle } from "react-icons/bi";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Signup = () => {
   const { user, googleSignIn, createUser, updateUserName, userVerification } =
@@ -21,10 +23,12 @@ const Signup = () => {
         updateUserName(data.name).then((res) => {});
         userVerification().then(() => {
           navigate("/login");
-          console.log("verify your email first");
+          toast.info("Check your email to verify")
         });
       })
-      .catch((error) => {});
+      .catch((error) => {
+        toast.error(error.code)
+      });
   };
 
   //   Google sign in section

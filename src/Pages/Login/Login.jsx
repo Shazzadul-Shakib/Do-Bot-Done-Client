@@ -3,10 +3,12 @@ import { useForm } from "react-hook-form";
 import { BiLogoGoogle } from "react-icons/bi";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
   // userinfo from authcontext
-  const { user, googleSignIn, loginUser } = useContext(AuthContext);
+  const { googleSignIn, loginUser } = useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
   const from = location.state?.from?.pathname || "/";
@@ -20,14 +22,14 @@ const Login = () => {
     loginUser(data.email, data.password)
       .then((res) => {
         if (res.user?.emailVerified) {
+          toast.success("Login Succesfully!", { autoClose: 2000 });
           navigate(from, { replace: true });
         }else{
-          console.log("verify yur email first")
+          toast.info("Please verify Your email first!", { autoClose: 3000 });
         }
-        // console.log(res.user?.emailVerified);
       })
       .catch((error) => {
-        console.log(error.code);
+        toast.error(error.code, { autoClose: 3000 });
       });
   };
 
@@ -35,9 +37,12 @@ const Login = () => {
   const handleGoogleSignIn = () => {
     googleSignIn()
       .then(() => {
+        toast.success("Login Succesfully!", { autoClose: 2000 });
         navigate(from, { replace: true });
       })
-      .catch(() => {});
+      .catch((error) => {
+        toast.error(error.code, { autoClose: 3000 });
+      });
   };
 
   return (
@@ -108,6 +113,7 @@ const Login = () => {
           Continue With Google
         </button>
       </section>
+      <ToastContainer />
     </div>
   );
 };

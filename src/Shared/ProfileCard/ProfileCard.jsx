@@ -2,11 +2,13 @@ import img from '../../assets/profile.jpg';
 import { FaSquareFacebook, FaSquareGithub } from "react-icons/fa6";
 import { BiLogOut } from "react-icons/bi";
 import { FiEdit } from "react-icons/fi";
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { AuthContext } from '../../Providers/AuthProvider';
+import UpdateProfile from '../../Modal/UpdateProfile';
 
 const ProfileCard = () => {
   const { user, logout } = useContext(AuthContext);
+  const [openUpdateProfile,setOpenUpdateProfile]=useState(false);
  
   
   // Logout button handler
@@ -46,7 +48,9 @@ const ProfileCard = () => {
           <div>
             <p>
               <span className="text-sm font-semibold  ">Phone:</span>
-              <span className="text-xs pl-2 ">{user.phoneNumber?user.phoneNumber :'N/A'}</span>
+              <span className="text-xs pl-2 ">
+                {user.phoneNumber ? user.phoneNumber : "N/A"}
+              </span>
             </p>
             <p>
               <span className="text-sm font-semibold   ">Email:</span>
@@ -58,24 +62,12 @@ const ProfileCard = () => {
             </p>
           </div>
           <hr className="my-4" />
-          {/* Personal Social links with icons */}
-          {/* <div>
-            <div className="flex items-center">
-              <FaSquareFacebook className=" text-lg rounded-lg  mr-4 mb-2" />
-              <a href="" className="text-sm">
-                Shazzadul Islam Shakib
-              </a>
-            </div>
-            <div className="flex items-center">
-              <FaSquareGithub className=" text-lg rounded-lg mr-4" />
-              <a href="" className="text-sm">
-                Shazzadul-Shakib
-              </a>
-            </div>
-          </div> */}
           {/* Edit profile button */}
           <div className=" flex justify-end mt-4">
-            <button className=" flex items-center px-4 py-1 rounded-lg border border-bg mx-2 mt-6 text-xs">
+            <button
+              onClick={() => setOpenUpdateProfile(true)}
+              className=" flex items-center px-4 py-1 rounded-lg border border-bg mx-2 mt-6 text-xs"
+            >
               <FiEdit className="mr-2" />
               Edit Info
             </button>
@@ -87,6 +79,9 @@ const ProfileCard = () => {
             </button>
           </div>
         </div>
+        {openUpdateProfile && (
+          <UpdateProfile onclose={()=>setOpenUpdateProfile(false)} />
+        )}
       </section>
     );
 };
