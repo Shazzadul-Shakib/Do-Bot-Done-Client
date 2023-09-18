@@ -28,7 +28,6 @@ const AddNewTodo = ({ onAddSuccess }) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         reset();
         refetch();
         if (onAddSuccess) {

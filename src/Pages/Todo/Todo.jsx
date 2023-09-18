@@ -69,7 +69,7 @@ const Todo = () => {
             >
               <input
                 className={`peer cursor-pointer appearance-none min-w-[16px] rounded-sm h-4 ${
-                  todo.isChecked ? "bg-green" : "bg-secondary"
+                  todo.isChecked ? "bg-primary" : "bg-bg"
                 } peer`}
                 type="checkbox"
                 onClick={() => toggleCheck(todo)}
@@ -77,7 +77,7 @@ const Todo = () => {
                 id="todo"
                 defaultChecked={todo.isChecked}
               />
-              <label htmlFor="todo" className="text-lg mx-3 peer-checked:text-green peer-checked:line-through cursor-pointer ">
+              <label className="text-lg mx-3 peer-checked:text-primary  peer-checked:line-through cursor-pointer ">
                 {todo.todo}
               </label>
               <BiDotsVerticalRounded

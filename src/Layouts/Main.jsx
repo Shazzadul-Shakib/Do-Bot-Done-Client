@@ -4,9 +4,10 @@ import ProfileCard from "../Shared/ProfileCard/ProfileCard";
 import Todo from "../Pages/Todo/Todo";
 import AddNewTodo from "../Pages/AddNewTodo/AddNewTodo";
 import { AiOutlinePlusCircle } from "react-icons/ai";
+import useOutsideClick from "../Hooks/useOutsideClick";
 
 const Main = () => {
-  const [createNewTodo, setCreateNewtodo] = useState(false);
+  const [createNewTodo, setCreateNewtodo,createNewTodoRef] = useOutsideClick(false);
   const toggleNewTodo = () => {
     setCreateNewtodo(!createNewTodo);
   };
@@ -26,17 +27,17 @@ const Main = () => {
           </div>
         </div>
         {/* Add new todo icon */}
-        <div className=" flex justify-center mt-6 md:hidden">
+        <div ref={createNewTodoRef} className=" flex justify-center mt-6 md:hidden">
           <AiOutlinePlusCircle
             onClick={toggleNewTodo}
             className=" text-6xl text-secondary"
           />
+          {createNewTodo && (
+            <div className=" absolute bottom-16 mx-2 md:hidden">
+              <AddNewTodo onAddSuccess={toggleNewTodo} />
+            </div>
+          )}
         </div>
-        {createNewTodo && (
-          <div className=" absolute bottom-16 mx-2 md:hidden">
-            <AddNewTodo onAddSuccess={toggleNewTodo} />
-          </div>
-        )}
       </div>
     </div>
   );
