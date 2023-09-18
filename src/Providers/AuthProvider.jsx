@@ -4,6 +4,7 @@ import {
   createUserWithEmailAndPassword,
   getAuth,
   onAuthStateChanged,
+  sendEmailVerification,
   sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signInWithPopup,
@@ -46,6 +47,11 @@ const AuthProvider = ({ children }) => {
     return sendPasswordResetEmail(auth,email);
   }
 
+  // Email verification
+  const userVerification=()=>{
+    return sendEmailVerification(auth.currentUser);
+  }
+
   // Logout system
   const logout = () => {
     setLoading(true);
@@ -55,7 +61,12 @@ const AuthProvider = ({ children }) => {
   // Check the state of user login/logout
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
+      if(currentUser?.emailVerified){
+        setUser(currentUser);
+      }else{
+        setUser(null);
+        logout();
+      }
       setLoading(false);
     });
     return () => {
@@ -71,6 +82,7 @@ const AuthProvider = ({ children }) => {
     updateUserName,
     loginUser,
     resetPassword,
+    userVerification,
     logout,
 
   };

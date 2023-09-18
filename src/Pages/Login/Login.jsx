@@ -5,36 +5,41 @@ import { AuthContext } from "../../Providers/AuthProvider";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Login = () => {
-    // userinfo from authcontext
-    const { user, googleSignIn, loginUser } = useContext(AuthContext);
-      const location = useLocation();
-      const navigate = useNavigate();
-      const from = location.state?.from?.pathname || "/";
+  // userinfo from authcontext
+  const { user, googleSignIn, loginUser } = useContext(AuthContext);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const from = location.state?.from?.pathname || "/";
 
-      const {
-        register,
-        handleSubmit,
-        formState: { errors },
-      } = useForm();
-      const onSubmit = (data) => {
-        loginUser(data.email,data.password)
-        .then(res=>{
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const onSubmit = (data) => {
+    loginUser(data.email, data.password)
+      .then((res) => {
+        if (res.user?.emailVerified) {
           navigate(from, { replace: true });
-        })
-        .catch(error=>{
-          console.log(error.code)
-        })
-      };
+        }else{
+          console.log("verify yur email first")
+        }
+        // console.log(res.user?.emailVerified);
+      })
+      .catch((error) => {
+        console.log(error.code);
+      });
+  };
 
-    //   Google sign in section
-    const handleGoogleSignIn=()=>{
-        googleSignIn()
-        .then(()=>{
-            navigate(from, { replace: true });
-        })
-        .catch(()=>{})
-    }
-      
+  //   Google sign in section
+  const handleGoogleSignIn = () => {
+    googleSignIn()
+      .then(() => {
+        navigate(from, { replace: true });
+      })
+      .catch(() => {});
+  };
+
   return (
     <div className="mx-auto flex min-h-screen w-full items-center justify-center bg-bg text-white">
       <section className="flex w-3/4 md:w-[30rem] flex-col space-y-10">
