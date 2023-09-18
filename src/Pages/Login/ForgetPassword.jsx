@@ -1,16 +1,23 @@
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Providers/AuthProvider";
 
 const ForgetPassword = () => {
+  const { resetPassword } = useContext(AuthContext);
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
-   console.log(data);
+    console.log(data);
+    resetPassword(data.email).then((res) => {
+      console.log("password reset email sent");
+      reset();
+    });
   };
-
 
   return (
     <div className="mx-auto flex min-h-screen w-full items-center justify-center bg-bg text-white">
@@ -19,7 +26,9 @@ const ForgetPassword = () => {
           <h1 className="text-center text-secondary text-3xl font-semibold mb-5">
             Forgot Password?
           </h1>
-          <p className="text-center text-secondary">Don't worry. Please enter your email to reset password</p>
+          <p className="text-center text-secondary">
+            Don't worry. Please enter your email to reset password
+          </p>
         </div>
 
         <form

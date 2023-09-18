@@ -21,7 +21,9 @@ const Login = () => {
         .then(res=>{
           navigate(from, { replace: true });
         })
-        .catch(errror=>{})
+        .catch(error=>{
+          console.log(error.code)
+        })
       };
 
     //   Google sign in section
