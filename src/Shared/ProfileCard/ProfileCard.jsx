@@ -1,5 +1,4 @@
 import img from '../../assets/profile.jpg';
-import { FaSquareFacebook, FaSquareGithub } from "react-icons/fa6";
 import { BiLogOut } from "react-icons/bi";
 import { FiEdit } from "react-icons/fi";
 import { useContext, useState } from 'react';
@@ -9,6 +8,7 @@ import UpdateProfile from '../../Modal/UpdateProfile';
 const ProfileCard = () => {
   const { user, logout } = useContext(AuthContext);
   const [openUpdateProfile,setOpenUpdateProfile]=useState(false);
+  console.log(user);
  
   
   // Logout button handler
