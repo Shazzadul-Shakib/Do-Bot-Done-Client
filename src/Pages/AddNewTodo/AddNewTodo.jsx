@@ -15,7 +15,7 @@ const AddNewTodo = ({ onAddSuccess }) => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = async(data) => {
+  const onSubmit = async (data) => {
     data.userEmail = user.email;
     data.isChecked = false;
     // Send new todo to server
