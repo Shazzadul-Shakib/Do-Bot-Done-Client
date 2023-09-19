@@ -8,8 +8,6 @@ import UpdateProfile from '../../Modal/UpdateProfile';
 const ProfileCard = () => {
   const { user, logout } = useContext(AuthContext);
   const [openUpdateProfile,setOpenUpdateProfile]=useState(false);
-  console.log(user);
- 
   
   // Logout button handler
   const handleLogout=()=>{
@@ -21,45 +19,17 @@ const ProfileCard = () => {
     return (
       <section className="">
         <div className="bg-secondary text-bg shadow-lg px-5 pt-10 py-5 rounded-xl ">
-          {/* Visual Profile */}
-          <div className=" flex items-center">
-            {user.photoURL ? (
-              <img
-                className="w-16 h-16 rounded-full mr-3 border-2 border-bg"
-                src={user?.photoURL}
-                alt=""
-              />
-            ) : (
-              <img
-                className="w-16 h-16 rounded-full mr-3 border-2 border-bg"
-                src={img}
-                alt=""
-              />
-            )}
-            <h2 className="text-xl font-medium">{user?.displayName}</h2>
-          </div>
-          {/* Bio section */}
-          <div className="my-6 px-2 border rounded-lg p-2 border-bg">
-            <p className="text-xs px-2">
-              Never compare your limits, just push to the next level.
-            </p>
-          </div>
-          {/* Personal Information section */}
-          <div>
-            <p>
-              <span className="text-sm font-semibold  ">Phone:</span>
-              <span className="text-xs pl-2 ">
-                {user.phoneNumber ? user.phoneNumber : "N/A"}
-              </span>
-            </p>
-            <p>
-              <span className="text-sm font-semibold   ">Email:</span>
-              <span className="text-xs pl-2 ">{user?.email}</span>
-            </p>
-            <p>
-              <span className="text-sm font-semibold   ">Address:</span>
-              <span className="text-xs pl-2 ">N/A</span>
-            </p>
+          <div className="">
+            {/* Visual Profile */}
+            <div className=" flex flex-col items-center mb-4">
+                <img
+                  className="w-[100px] h-[100px] rounded-full mr-3 border-2 border-bg mb-5"
+                  src={user?.photoURL || img}
+                  alt=""
+                />
+              <h2 className="text-2xl font-medium mb-2">{user?.displayName}</h2>
+              <p className="text-xs pl-2 ">{user?.email}</p>
+            </div>
           </div>
           <hr className="my-4" />
           {/* Edit profile button */}
@@ -80,7 +50,7 @@ const ProfileCard = () => {
           </div>
         </div>
         {openUpdateProfile && (
-          <UpdateProfile onclose={()=>setOpenUpdateProfile(false)} />
+          <UpdateProfile onclose={() => setOpenUpdateProfile(false)} />
         )}
       </section>
     );

@@ -1,12 +1,12 @@
-import { DatePicker } from '@mui/x-date-pickers';
-import React, { useContext } from 'react';
-import { useForm } from 'react-hook-form';
-import useTodo from '../../Hooks/useTodo';
-import { AuthContext } from '../../Providers/AuthProvider';
+import { DatePicker } from "@mui/x-date-pickers";
+import React, { useContext } from "react";
+import { useForm } from "react-hook-form";
+import useTodo from "../../Hooks/useTodo";
+import { AuthContext } from "../../Providers/AuthProvider";
 
 const AddNewTodo = ({ onAddSuccess }) => {
   const [data, isLoading, refetch] = useTodo();
-  const {user}=useContext(AuthContext);
+  const { user } = useContext(AuthContext);
 
   const {
     register,
@@ -15,11 +15,11 @@ const AddNewTodo = ({ onAddSuccess }) => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
+  const onSubmit = async(data) => {
     data.userEmail = user.email;
-    data.isChecked=false;
+    data.isChecked = false;
     // Send new todo to server
-    fetch("http://localhost:5000/todos", {
+    await fetch("https://do-bot-done-server.vercel.app/todos", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -47,7 +47,6 @@ const AddNewTodo = ({ onAddSuccess }) => {
       <div className=" flex flex-col justify-center z-0">
         {/* Text-area */}
         <form onSubmit={handleSubmit(onSubmit)} className=" mt-4">
-         
           <textarea
             {...register("todo", { required: true })}
             className=" w-full rounded-xl my-3 text-primary p-2 resize-none outline-none"

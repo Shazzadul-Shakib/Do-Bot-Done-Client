@@ -1,24 +1,24 @@
-import React from 'react';
-import { useForm } from 'react-hook-form';
-import useTodo from '../Hooks/useTodo';
+import React from "react";
+import { useForm } from "react-hook-form";
+import useTodo from "../Hooks/useTodo";
 
-const UpdateTodo = ({todo,closeModal}) => {
-    const [, isLoading, refetch] = useTodo();
-     const {
+const UpdateTodo = ({ todo, closeModal }) => {
+  const [, isLoading, refetch] = useTodo();
+  const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
   } = useForm();
-// use refetch fromn usequerry
+  // use refetch fromn usequerry
 
   const onSubmit = (data) => {
-    fetch(`http://localhost:5000/todos/${todo._id}`, {
+    fetch(`https://do-bot-done-server.vercel.app/todos/${todo._id}`, {
       method: "PUT",
-      headers:{
-        "content-type": "application/json"
+      headers: {
+        "content-type": "application/json",
       },
-      body:JSON.stringify(data)
+      body: JSON.stringify(data),
     })
       .then((res) => res.json())
       .then((data) => {
@@ -26,8 +26,8 @@ const UpdateTodo = ({todo,closeModal}) => {
         refetch();
         closeModal();
       });
-  }
-    
+  };
+
   return (
     <div className="fixed inset-0 z-10 flex justify-center items-center bg-primary bg-opacity-60 backdrop-blur-md">
       <div className=" bg-accent p-2 mx-2 md:p-6 rounded-xl md:m-0">

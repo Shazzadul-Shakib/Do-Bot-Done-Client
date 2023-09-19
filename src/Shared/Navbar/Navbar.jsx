@@ -14,12 +14,12 @@ const Navbar = () => {
   // Toggle menubar
   const [openMenu, setOpenMenu, menuRef] = useOutsideClick(false);
   const toggleMenu = () => {
-    setOpenMenu(!openMenu); //todo make custom hook to toggle
+    setOpenMenu(!openMenu); 
   };
   // Toggle profilecard
   const [openProfile, setOpenProfile, profileRef] = useOutsideClick(false);
   const toggleProfile = () => {
-    setOpenProfile(!openProfile); //todo make custom hook to toggle
+    setOpenProfile(!openProfile);
   };
 
   return (
@@ -83,7 +83,7 @@ const Navbar = () => {
             <div onClick={toggleProfile}>
               <img
                 className="h-full rounded-full "
-                src={user?.photoURL || img}
+                src={user.photoURL || img}
               />
             </div>
             {/* Profilecard */}

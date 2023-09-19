@@ -12,9 +12,9 @@ const Todo = () => {
   const [selectedTodo, setSelectedTodo] = useState(null); // Store the selected todo for editing
 
   // Upate status of checked
-  const toggleCheck=async(todo)=>{
-    todo.isChecked=!todo.isChecked;
-    await fetch(`http://localhost:5000/todos/${todo._id}`, {
+  const toggleCheck = async (todo) => {
+    todo.isChecked = !todo.isChecked;
+    await fetch(`https://do-bot-done-server.vercel.app/todos/${todo._id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",
@@ -25,8 +25,7 @@ const Todo = () => {
       .then((data) => {
         refetch();
       });
-
-  }
+  };
 
   const toggle = (id) => {
     // toggle that particular id if prevstate == false then false otherwise id will toggle true
@@ -45,7 +44,7 @@ const Todo = () => {
 
   // Handle delete a particular item
   const handleDelete = (id) => {
-    fetch(`http://localhost:5000/todos/${id}`, {
+    fetch(`https://do-bot-done-server.vercel.app/todos/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -98,7 +97,7 @@ const Todo = () => {
               )}
             </div>
           ))}
-          <div className={`text-center ${data.length > 0 && "hidden"}`}>
+          <div className={`text-center ${data?.length > 0 && "hidden"}`}>
             <h1>No Todos for today!</h1>
           </div>
         </div>

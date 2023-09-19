@@ -1,36 +1,42 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
-import profile from '../assets/profile.jpg';
 import { AiOutlineCloudUpload } from "react-icons/ai";
 import { AuthContext } from "../Providers/AuthProvider";
+import axios from "axios";
 
 const UpdateProfile = ({ onclose }) => {
-    const{user}=useContext(AuthContext);
+    const { user, updateProfileInfo } = useContext(AuthContext);
+    const [imageURL,setImageURL]=useState(null);
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
   } = useForm();
-  // use refetch fromn usequerry
-//   if (onclose) {
-//     onclose();
-//   }
-  const onSubmit = (data) => {
-    console.log(data);
-  };
+
+
+   const onSubmit = async(data) => {
+    // console.log(data)
+    const formData=new FormData();
+    formData.append("image", data?.image[0]);
+     const response = await axios.post(
+       "https://api.imgbb.com/1/upload?key=5253c30256b114e1a0e9185fe3cf6230",
+       formData
+     );
+     const imageUrl = response.data.data.url;
+     data.imageURL=imageUrl;
+     await updateProfileInfo(data.name,data.imageURL)
+     .then(()=>{
+      onclose();
+     })
+     .catch(()=>{})
+   };
+
 
   return (
     <div className="fixed inset-0 z-50 flex justify-center items-center bg-primary bg-opacity-60 backdrop-blur-md">
       <div className=" bg-accent mx-3 pb-3 md:w-1/3 p-2 md:p-6 rounded-xl md:m-0">
         <form onSubmit={handleSubmit(onSubmit)} className=" mt-4 ">
-          <div className=" mb-3 flex justify-center">
-            <img
-              className=" w-[90px] h-[90px] rounded-full border-2 border-bg"
-              src={profile}
-              alt=""
-            />
-          </div>
           <div className="mb-3 w-full border border-bg rounded-xl mt-1 text-primary p-2 outline-none text-sm text-center">
             <label
               htmlFor="image"
@@ -49,18 +55,6 @@ const UpdateProfile = ({ onclose }) => {
             />
           </div>
           <div className="mb-3">
-            <label className=" text-sm text-secondary ">Update Bio</label>
-            <textarea
-              {...register("bio")}
-              className=" w-full rounded-xl mt-1 text-primary p-4 resize-none outline-none text-lg"
-              name="bio"
-              defaultValue={user.bio || ""}
-              id=""
-              cols="30"
-              rows="3"
-            ></textarea>
-          </div>
-          <div className="mb-3">
             <label className=" text-sm text-secondary ">User Name</label>
             <input
               type="text"
@@ -73,33 +67,6 @@ const UpdateProfile = ({ onclose }) => {
               <p className="text-red text-xs mt-1">Name is required*</p>
             )}
           </div>
-          <div className="mb-3">
-            <label className=" text-sm text-secondary ">Phone Number</label>
-            <input
-              type="text"
-              name="phone"
-              defaultValue={user.phoneNumber || "N/A"}
-              {...register("phone", { required: true })}
-              className=" w-full rounded-xl mt-1 text-primary p-2 outline-none text-sm"
-            />
-            {errors.phone && (
-              <p className="text-red text-xs mt-1">phone number is required*</p>
-            )}
-          </div>
-          <div className="mb-3">
-            <label className=" text-sm text-secondary ">Address</label>
-            <input
-              type="text"
-              name="address"
-              defaultValue={user.address || "N/A"}
-              {...register("address", { required: true })}
-              className=" w-full rounded-xl mt-1 text-primary p-2 outline-none text-sm"
-            />
-            {errors.address && (
-              <p className="text-red text-xs mt-1">Address is required*</p>
-            )}
-          </div>
-
           <div className=" flex gap-6 ">
             <button
               onClick={onclose}

@@ -33,7 +33,16 @@ const AuthProvider = ({ children }) => {
   };
   const updateUserName = (userName) => {
     return updateProfile(auth.currentUser, {
-      displayName: userName,
+      displayName: userName
+    });
+  };
+
+  // Update user profile
+  const updateProfileInfo = (name, photoURL) => {
+    // setLoading(true);
+    return updateProfile(auth.currentUser, {
+      displayName: name,
+      photoURL: photoURL,
     });
   };
 
@@ -83,6 +92,7 @@ const AuthProvider = ({ children }) => {
     loginUser,
     resetPassword,
     userVerification,
+    updateProfileInfo,
     logout,
 
   };
