@@ -19,13 +19,16 @@ const AddNewTodo = ({ onAddSuccess }) => {
     data.userEmail = user.email;
     data.isChecked = false;
     // Send new todo to server
-    await fetch("https://do-bot-done-server.vercel.app/todos", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
+    await fetch(
+      "https://do-bot-done-server-mrv9qmrx8-shazzadul-shakib.vercel.app/todos",
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         reset();

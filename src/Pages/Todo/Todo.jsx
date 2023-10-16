@@ -14,13 +14,16 @@ const Todo = () => {
   // Upate status of checked
   const toggleCheck = async (todo) => {
     todo.isChecked = !todo.isChecked;
-    await fetch(`https://do-bot-done-server.vercel.app/todos/${todo._id}`, {
-      method: "PATCH",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(todo),
-    })
+    await fetch(
+      `https://do-bot-done-server-mrv9qmrx8-shazzadul-shakib.vercel.app/todos/${todo._id}`,
+      {
+        method: "PATCH",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(todo),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         refetch();
@@ -44,9 +47,12 @@ const Todo = () => {
 
   // Handle delete a particular item
   const handleDelete = (id) => {
-    fetch(`https://do-bot-done-server.vercel.app/todos/${id}`, {
-      method: "DELETE",
-    })
+    fetch(
+      `https://do-bot-done-server-mrv9qmrx8-shazzadul-shakib.vercel.app/todos/${id}`,
+      {
+        method: "DELETE",
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         refetch();

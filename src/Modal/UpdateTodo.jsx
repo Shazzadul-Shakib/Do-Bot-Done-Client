@@ -13,13 +13,16 @@ const UpdateTodo = ({ todo, closeModal }) => {
   // use refetch fromn usequerry
 
   const onSubmit = (data) => {
-    fetch(`https://do-bot-done-server.vercel.app/todos/${todo._id}`, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
+    fetch(
+      `https://do-bot-done-server-mrv9qmrx8-shazzadul-shakib.vercel.app/todos/${todo._id}`,
+      {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         reset();
