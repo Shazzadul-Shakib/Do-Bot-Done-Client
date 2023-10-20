@@ -14,7 +14,7 @@ const Navbar = () => {
   // Toggle menubar
   const [openMenu, setOpenMenu, menuRef] = useOutsideClick(false);
   const toggleMenu = () => {
-    setOpenMenu(!openMenu); 
+    setOpenMenu(!openMenu);
   };
   // Toggle profilecard
   const [openProfile, setOpenProfile, profileRef] = useOutsideClick(false);
@@ -50,27 +50,27 @@ const Navbar = () => {
             <div ref={menuRef}>
               <div onClick={toggleMenu}>
                 <FiMinus
-                  className={`text-xl mx-2 md:mx-4 ${openMenu || "hidden"}`}
+                  className={`text-xl mx-2 md:mx-4 cursor-pointer ${openMenu || "hidden"}`}
                 />
                 <FiPlus
-                  className={`text-xl mx-2 md:mx-4 ${openMenu && "hidden"}`}
+                  className={`text-xl mx-2 md:mx-4 cursor-pointer ${openMenu && "hidden"}`}
                 />
               </div>
               {/* Lower navbar section contains navlinks */}
               {openMenu && (
-                <ul className="absolute top-full right-1 bg-secondary text-bg py-2 px-4 rounded-lg ">
+                <ul className="absolute top-full right-1 bg-bg text-secondary py-2 px-4 rounded-lg text-center ">
                   <li className="py-1">
-                    <Link className=" px-4 py-1 rounded-lg hover:bg-primary">
+                    <Link className="  px-4 py-1 rounded-lg  hover:bg-primary hover:text-bg ">
                       Todo Bot
                     </Link>
                   </li>
                   <li className="py-1">
-                    <Link className=" px-4 py-1 rounded-lg hover:bg-primary">
+                    <Link className="  px-4 py-1 rounded-lg  hover:bg-primary hover:text-bg">
                       Wallet Bot
                     </Link>
                   </li>
                   <li className="py-1">
-                    <Link className=" px-4 py-1 rounded-lg hover:bg-primary">
+                    <Link className="  px-4 py-1 rounded-lg  hover:bg-primary hover:text-bg">
                       Schedule Bot
                     </Link>
                   </li>
